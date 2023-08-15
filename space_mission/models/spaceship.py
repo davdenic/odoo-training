@@ -20,6 +20,6 @@ class Spaceship(models.Model):
     width = fields.Float()
     height = fields.Float()
     engine_number = fields.Char()
-    fuel_type = fields.Selection(selection=[('solid_fuel', 'Solid Fuel'), ('liquid_fuel', 'Liquid Fuel'),
-                           default="solid_fuel"])
+    fuel_type = fields.Selection(selection=[('solid_fuel', 'Solid Fuel'), ('liquid_fuel', 'Liquid Fuel')],
+                           default="solid_fuel")
     
