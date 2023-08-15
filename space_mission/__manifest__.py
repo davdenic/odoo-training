@@ -11,7 +11,11 @@
     'website': 'www.sozialinfo.ch',
     'category': 'Custom Modules',
     'depends': ['base'],
-    'data': [],
+    'data': [
+        "security/space_mission_groups.xml",
+        "security/ir.model.access.csv",
+        "security/space_mission_security.xml"        
+    ],
     'demo': [
         'demo/spaceship_demo.xml'
     ],
