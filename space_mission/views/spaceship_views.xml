@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="spaceship_view_form" model="ir.ui.view">
+        <field name="name">spaceship.view.form</field>
+        <field name="model">space_mission.spaceship</field>
+        <field name="arch" type="xml">
+            <form string="Spaceship View">
+                <header></header>
+                <sheet>
+                    <h1><field name="name"/></h1>
+                    <group>
+                        <group>
+                            <separator string="Spaceship"/>
+                            <field name="type"/>
+                            <field name="model"/>
+                            <field name="active"/>
+                        </group>
+                        <group>
+                            <separator string="Crew"/>
+                            <field name="captain"/>
+                            <field name="required_crew"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Size">
+                            <field name="length"/>
+                            <field name="width"/>
+                            <field name="height"/>
+                        </page>
+                        <page string="Engine">
+                            <field name="engine_number"/>
+                            <field name="fuel_type"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
