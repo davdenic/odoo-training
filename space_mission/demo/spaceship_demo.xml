@@ -4,6 +4,7 @@
         <record id="spaceship_01" model="space_mission.spaceship">
             <field name="name">Enterprise</field>
             <field name="type">freighter</field>
+            <field name="build_date">2022-01-31</field>
             <field name="model">C011234</field>
             <field name="captain">T. Kirk</field>
             <field name="required_crew">123</field>
@@ -13,9 +14,10 @@
             <field name="engine_number">E9876543</field>
             <field name="fuel_type">solid_fuel</field>
         </record>
-        <record id="spaceship_01" model="space_mission.spaceship">
+        <record id="spaceship_02" model="space_mission.spaceship">
             <field name="name">Constitution</field>
             <field name="type">transport</field>
+            <field name="build_date">2023-06-27</field>
             <field name="model">C22234455</field>
             <field name="captain">Spock</field>
             <field name="required_crew">43</field>
