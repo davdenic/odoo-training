@@ -15,6 +15,7 @@
         "security/space_mission_groups.xml",
         "security/ir.model.access.csv",
         "security/space_mission_security.xml",
+        "data/mission_data.xml",
         "views/space_mission_menuitems.xml",
         "views/spaceship_views.xml",
         "views/mission_views.xml",

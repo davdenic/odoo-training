@@ -8,10 +8,15 @@
                 <header></header>
                 <sheet>
                     <h1><field name="name"/></h1>
+                    <h3><field name="mission_number"/></h3>
                     <group>
                         <group>
-                            <field name="launch_date"/>
-                            <field name="return_date"/>
+                            <field name="launch_date" 
+                                   widget="daterange" 
+                                   options="{'related_end_date':'return_date'}"/>
+                            <field name="return_date"
+                                   widget="daterange" 
+                                   options="{'related_start_date':'launch_date'}"/>
                         </group>
                         <group>
                             <separator string="Crew"/>
@@ -33,6 +38,7 @@
         <field name="arch" type="xml">
             <tree string="Mission List">
                 <field name="name"/>
+                <field name="mission_number"/>
                 <field name="spaceship_id"/>
                 <field name="launch_date"/>
                 <field name="return_date"/>
@@ -46,6 +52,7 @@
         <field name="arch" type="xml">
             <search>
                 <field name="name"/>
+                <field name="mission_number"/>
                 <field name="spaceship_id"/>
                 <field name="launch_date"/>
             </search>
