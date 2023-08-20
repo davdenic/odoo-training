@@ -35,6 +35,7 @@
                 <field name="name"/>
                 <field name="spaceship_id"/>
                 <field name="launch_date"/>
+                <field name="return_date"/>
             </tree>
         </field>
     </record>

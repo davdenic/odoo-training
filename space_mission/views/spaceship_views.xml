@@ -9,6 +9,7 @@
                 <sheet>
                     <h1><field name="name"/></h1>
                     <h3><field name="model"/></h3>
+                    <field name="mission_ids"/>
                     <group>
                         <group>
                             <separator string="Crew"/>

@@ -24,6 +24,7 @@ class Spaceship(models.Model):
     engine_number = fields.Char()
     fuel_type = fields.Selection(selection=[('solid_fuel', 'Solid Fuel'), ('liquid_fuel', 'Liquid Fuel')],
                            default="solid_fuel")
+    mission_ids = fields.One2many("space_mission.mission", "spaceship_id")
 
     @api.constrains('build_date')
     def _check_build_date(self):
