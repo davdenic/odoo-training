@@ -1,5 +1,6 @@
 from odoo import api, fields, models
 from odoo.exceptions import ValidationError
+from odoo.tools import date_utils
 from datetime import date
 
 class Mission(models.Model):
@@ -14,6 +15,7 @@ class Mission(models.Model):
 
     launch_date = fields.Date()
     return_date = fields.Date()
+    duration = fields.Integer(compute="_compute_mission_duration", inverse="_inverse_mission_duration", readonly=False)
 
     spaceship_id = fields.Many2one("space_mission.spaceship")
     crew_ids = fields.Many2many("res.partner")
@@ -28,6 +30,19 @@ class Mission(models.Model):
 
     @api.constrains('launch_date', 'return_date')
     def _check_return_date(self):
-        for mission in self:
-            if(mission.launch_date > mission.return_date):
+        for record in self:
+            if(record.launch_date > record.return_date):
                 raise ValidationError('The return date cannot be before the launch date')
+
+    @api.depends('launch_date', 'return_date')
+    def _compute_mission_duration(self):
+        for record in self:
+            if(record.launch_date and record.return_date):
+                record.duration = (record.return_date - record.launch_date).days + 1
+
+    def _inverse_mission_duration(self):
+        for record in self:
+            if(record.launch_date and record.duration):
+                record.return_date = date_utils.add(record.launch_date, days=record.duration + 1)
+        
+        

@@ -17,6 +17,7 @@
                             <field name="return_date"
                                    widget="daterange" 
                                    options="{'related_start_date':'launch_date'}"/>
+                            <field name="duration"/>
                         </group>
                         <group>
                             <separator string="Crew"/>
@@ -42,6 +43,7 @@
                 <field name="spaceship_id"/>
                 <field name="launch_date"/>
                 <field name="return_date"/>
+                <field name="duration"/>
             </tree>
         </field>
     </record>
