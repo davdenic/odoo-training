@@ -20,6 +20,12 @@
                             <field name="duration"/>
                         </group>
                         <group>
+                            <field name="fuel"/>
+                            <field name="engines"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
                             <separator string="Crew"/>
                             <field name="crew_ids"/>
                         </group>
@@ -58,6 +64,44 @@
                 <field name="spaceship_id"/>
                 <field name="launch_date"/>
             </search>
+        </field>
+    </record>
+
+    <record id="mission_view_graph" model="ir.ui.view">
+        <field name="name">mission.view.graph</field>
+        <field name="model">space_mission.mission</field>
+        <field name="arch" type="xml">
+            <graph>
+                <field name="mission_number"/>
+                <field name="fuel"/>
+                <field name="engines"/>
+                <field name="duration"/>
+            </graph>
+        </field>
+    </record>
+    
+    <record id="mission_view_calendar" model="ir.ui.view">
+        <field name="name">mission.view.calendar</field>
+        <field name="model">space_mission.mission</field>
+        <field name="arch" type="xml">
+            <calendar string="Mission Calendar"
+                      date_start="launch_date"
+                      date_stop="return_date"
+                      color="mission_number"
+                      mode="year">
+                <field name="mission_number" filters="1"/>
+            </calendar>
+        </field>
+    </record>
+    
+    <record id="mission_view_pivot" model="ir.ui.view">
+        <field name="name">mission.view.pivot</field>
+        <field name="model">space_mission.mission</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="fuel" type="row"/>
+                <field name="engines" type="row"/>
+            </pivot>
         </field>
     </record>
 </odoo>

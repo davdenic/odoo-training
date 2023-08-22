@@ -2,6 +2,8 @@ from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 from odoo.tools import date_utils
 from datetime import date
+#import logging
+#_logger = logging.getLogger(__name__)
 
 class Mission(models.Model):
     _name = "space_mission.mission"
@@ -15,10 +17,15 @@ class Mission(models.Model):
 
     launch_date = fields.Date()
     return_date = fields.Date()
-    duration = fields.Integer(compute="_compute_mission_duration", inverse="_inverse_mission_duration", readonly=False)
+    duration = fields.Integer(compute="_compute_mission_duration", 
+                                inverse="_inverse_mission_duration", 
+                                readonly=False)
 
     spaceship_id = fields.Many2one("space_mission.spaceship")
     crew_ids = fields.Many2many("res.partner")
+
+    fuel = fields.Integer()
+    engines = fields.Integer()    
 
     @api.model_create_multi
     def create(self, vals_list):
@@ -36,6 +43,7 @@ class Mission(models.Model):
 
     @api.depends('launch_date', 'return_date')
     def _compute_mission_duration(self):
+        #_logger.info(self.name)
         for record in self:
             if(record.launch_date and record.return_date):
                 record.duration = (record.return_date - record.launch_date).days + 1
